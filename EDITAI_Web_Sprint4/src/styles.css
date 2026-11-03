@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0f19;
+  --color-panel: #121a28;
+  --color-mint: #5eead4;
+  --font-sans: "Segoe UI", Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; background: #0b0f19; color: #f8fafc; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+:focus-visible { outline: 3px solid #5eead4; outline-offset: 4px; }
+input[type="range"] { accent-color: #5eead4; width: 100%; }
+input[type="color"] { padding: 0; border: 0; cursor: pointer; }
+::selection { background: #5eead4; color: #0b0f19; }
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .primary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-mint px-5 py-3 text-sm font-bold text-ink transition hover:bg-teal-200 disabled:opacity-50; }
+  .secondary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-600 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-mint hover:text-mint; }
+  .field { @apply block w-full rounded-lg border border-slate-600 bg-ink px-3 py-3 text-base text-white placeholder:text-slate-500; }
+  .panel { @apply rounded-2xl border border-slate-700/70 bg-panel; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[.18em] text-mint; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
